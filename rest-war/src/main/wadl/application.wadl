@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://wadl.dev.java.net/2009/02"><doc
+        jersey:generatedBy="Jersey: 1.17 01/17/2013 03:31 PM"
+        xmlns:jersey="http://jersey.java.net/"/><doc title="Title"
+            xml:lang="en"><![CDATA[
+        Test task for smava
+    ]]></doc><grammars><include
+        href="xsd0.xsd"/></grammars><resources
+            base="http://localhost:8080/smava/rest"><resource
+                path="account"><method id="add"
+                        name="PUT"><request><representation
+                mediaType="application/xml"/></request></method><method
+                id="update" name="POST"><request><representation
+                mediaType="application/xml"/></request></method><method
+                id="getAll" name="GET"><response><ns2:representation
+                        element="account" mediaType="application/xml"
+                        xmlns:ns2="http://wadl.dev.java.net/2009/02"
+                xmlns=""/></response></method><resource
+                    path="{id}"><param name="id" style="template"
+                    type="xs:long"
+                    xmlns:xs="http://www.w3.org/2001/XMLSchema"/><method
+                    id="remove" name="DELETE"/><method id="get"
+                            name="GET"><response><ns2:representation
+                            element="account"
+                            mediaType="application/xml"
+                            xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns=""/></response></method></resource></resource></resources></application>

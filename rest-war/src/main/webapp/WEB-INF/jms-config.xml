@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-lazy-init="false"
+       default-init-method="init">
+
+    <bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <constructor-arg index="0" value="${jms.broker.url}" />
+    </bean>
+
+
+    <!--<bean id = "messageListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
+        <!--<property name="connectionFactory" ref="amqConnectionFactory"/>-->
+        <!--<property name="destinationName" value="${jms.broker.destination}"/>-->
+        <!--&lt;!&ndash;<property name="sessionAcknowledgeModeName" value="CLIENT_ACKNOWLEDGE" />&ndash;&gt;-->
+        <!--<property name="messageListener" ref="jmsMessageListener"/>-->
+    <!--</bean>-->
+
+    <bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <!-- name of the queue -->
+        <constructor-arg index="0" value="${jms.broker.destination}"/>
+    </bean>
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="amqConnectionFactory"/>
+        <property name="defaultDestination" ref="defaultDestination"/>
+        <property name="sessionAcknowledgeModeName" value="CLIENT_ACKNOWLEDGE"/>
+    </bean>
+</beans>
